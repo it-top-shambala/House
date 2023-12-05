@@ -13,9 +13,13 @@ struct Apartment {
     int number;
     vector<ApartmentOwner*>* owners;
 
-    void Init(int number) {
+    Apartment(int number) {
         this->number = number;
         owners = new vector<ApartmentOwner*>;
+    }
+
+    ~Apartment() {
+        delete owners;
     }
 
     bool AddOwner(ApartmentOwner* owner) {
@@ -32,8 +36,7 @@ struct Apartment {
 
         if (total > TOTAL) return false;
 
-        ApartmentOwner* owner = new ApartmentOwner;
-        owner->Init(last_name, first_name, portion);
+        ApartmentOwner* owner = new ApartmentOwner(last_name, first_name, portion);
         owners->push_back(owner);
         return true;
     }

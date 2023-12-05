@@ -5,13 +5,11 @@
 void PrintApartments(Apartments* apartments);
 
 int main() {
-    House* house = new House;
-    house->Init("Voronezh");
+    House* house = new House("Voronezh");
 
     house->AddApartment(1);
 
-    Apartment* apartment2 = new Apartment;
-    apartment2->Init(2);
+    Apartment* apartment2 = new Apartment(2);
     apartment2->AddOwner("Starinin", "Andrey", 1);
     house->AddApartment(apartment2);
 
@@ -24,6 +22,7 @@ int main() {
 
     PrintApartments(house->aparments);
 
+    delete house;
 
     return 0;
 }

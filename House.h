@@ -13,9 +13,13 @@ struct House {
     Apartments* aparments;
     string address;
 
-    void Init(string address) {
+    House(string address) {
         this->address = address;
         aparments = new Apartments;
+    }
+
+    ~House() {
+        delete aparments;
     }
 
     bool AddApartment(Apartment* apartment) {
@@ -25,8 +29,7 @@ struct House {
     }
 
     bool AddApartment(int number) {
-        Apartment* apartment = new Apartment;
-        apartment->Init(number);
+        Apartment* apartment = new Apartment(number);
 
         aparments->emplace(apartment->number, apartment);
 

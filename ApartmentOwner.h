@@ -11,16 +11,18 @@ struct ApartmentOwner {
     Person* person;
     double portian;
 
-    void Init(Person* person, double portion) {
+    ApartmentOwner(Person* person, double portion) {
         this->person = person;
         this->portian = portion;
     }
 
-    void Init(string last_name, string first_name, double portion) {
-        this->person = new Person;
-        person->Init(last_name, first_name);
-
+    ApartmentOwner(string last_name, string first_name, double portion) {
+        this->person = new Person(last_name, first_name);
         this->portian = portion;
+    }
+
+    ~ApartmentOwner() {
+        delete person;
     }
 
     string ToString() {
